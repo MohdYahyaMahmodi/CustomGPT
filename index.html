@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomGPT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body> 
+
+    <section class="sidebar">
+
+        <button id="newChat">New Chat</button>
+        
+        <div class="side-rules">
+            <h1>Limitations</h1>
+            <p>May occasionally generate incorrect information</p>
+            <p>May occasionally produce harmful instructions or biased content</p>
+            <p>Limited knowledge of custom Dataset</p>
+            <h1>Examples</h1>
+            <p>math: 544*56*5</p>
+            <p>image: Car on ice</p>
+            <p>wiki: ChatGPT</p>
+            <p>What is your name?</p>
+        </div>
+
+        <nav>
+            <a href="#"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>Clear Conversation</a>
+            <a href="#"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Upgrade To Plus</a>
+            <a href="#"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>Light Mode</a>
+            <a href="#"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>Updates & FAQ</a>
+            <a href="#"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>Log Out</a>
+        </nav>
+    </section>
+
+    <section class="main">
+        <h1 class="title" id="header">CustomGPT</h1>
+        <div id="features" class="features">
+            <div class="header-bottom">
+                <div class="bottom-heading">
+                    <h2>Capabilities</h2>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h2>Math Equations</h2>
+                            <p>To solve math equations start prompt with math:</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h2>Image Generation</h2>
+                            <p>To generate Images start prompt with image:</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panels">
+                <div class="panel">
+                    <div class="panel-body">
+                        <h2>Wikipedia Generation</h2>
+                        <p>To generate answers about your prompt from Wikipedia use wiki:</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <h2>Personal Dataset</h2>
+                        <p>Use the JSON file to create prompts and answer and use NLP. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chatbot">
+            <div class="chatbot-body"></div>
+            <div class="bottom-section">
+                <div class="input-container">
+                    <input type="text" id="chatbot-input" placeholder="Send a message...">
+                    <div id="image-container" style="display: none;">
+                        <img id="image-result" alt="Image result">
+                    </div>
+                    <button id="chatbot-send">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <p class="info">
+                CustomGPT V1. Free Research Preview. Our goal is to make AI systems more natural and safe to interact with. Your feedback will help us improve.
+            </p>
+        </div>
+        
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js" integrity="sha512-jVMFsAksn8aljb9IJ+3OCAq38dJpquMBjgEuz7Q5Oqu5xenfin/jxdbKw4P5eKjUF4xiG/GPT5CvCX3Io54gyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
